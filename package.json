@@ -1,26 +1,30 @@
 {
-	"name": "nextjs-template",
-	"version": "1.0.0",
-	"scripts": {
-		"dev": "next",
-		"build": "next build",
-		"export": "next build && next export",
-		"start": "next start",
-		"prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check --write"
-	},
-	"dependencies": {
-		"@headlessui/react": "^2.2.4",
-		"@heroicons/react": "^2.1.3",
-		"@tailwindcss/postcss": "^4.1.8",
-		"@tailwindcss/typography": "^0.5.12",
-		"autoprefixer": "^10.2.0",
-		"next": "^15.3.3",
-		"postcss": "^8.5.4",
-		"postcss-import": "^16.1.0",
-		"prettier": "^3.5.3",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
-		"tailwindcss": "^4.1.8",
-		"wcag-contrast": "^3.0.0"
-	}
+  "name": "nextjs-template",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "export": "next build && next export",
+    "start": "next start",
+    "prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check --write"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.4",
+    "@heroicons/react": "^2.1.3",
+    "@tailwindcss/postcss": "^4.1.8",
+    "@tailwindcss/typography": "^0.5.12",
+    "autoprefixer": "^10.2.0",
+    "next": "^15.3.3",
+    "postcss": "^8.5.4",
+    "postcss-import": "^16.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.8",
+    "wcag-contrast": "^3.0.0"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
+    "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.12"
+  }
 }

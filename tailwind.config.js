@@ -1,5 +1,5 @@
-const defaultTheme=require("tailwindcss/defaultTheme");
-module.exports={
+const defaultTheme = require("tailwindcss/defaultTheme")
+module.exports = {
   darkMode: "class",
   content: [
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -17,4 +17,4 @@ module.exports={
   },
   variants: {},
   plugins: [require("@tailwindcss/typography")],
-};
+}
