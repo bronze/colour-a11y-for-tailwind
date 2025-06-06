@@ -17,8 +17,8 @@ export default function IndexPage() {
 	const backgroundColor = customTailwindColor
 		? colors[customTailwindColor[0]][customTailwindColor[1]]
 		: isDarkMode
-		? darkBackgroundHex
-		: lightBackgroundHex;
+			? darkBackgroundHex
+			: lightBackgroundHex;
 	useEffect(() => {
 		if (isDarkMode) {
 			setDarkness(400);
