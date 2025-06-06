@@ -52,7 +52,7 @@ export default function IndexPage() {
         <h1 className="text-4xl font-semibold">
           Colour accessibility test for Tailwind CSS
         </h1>
-        <h3 className="max-w-ch64 mx-auto py-4">
+        <h2 className="max-w-ch64 mx-auto py-4">
           This uses the{" "}
           <a
             className="text-blue-700 dark:text-blue-300 hover:underline"
@@ -62,7 +62,7 @@ export default function IndexPage() {
           accessibility ratings. You can switch between a white and black
           background using the toggle below and the scores will change for that
           background.
-        </h3>
+        </h2>
         <h3 className="py-2">
           <Link
             href="/about"
