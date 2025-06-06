@@ -175,11 +175,13 @@ function HexColourInput({backgroundColour, setBackgroundColour}) {
   return (
     <div className="h-10 flex justify-between gap-2 border items-center border-slate-300 bg-white rounded-md py-1 pl-4 pr-2 focus:border-blue-500 text-black focus:outline-none focus-within:ring-2 focus-within:ring-blue-500">
       <input
+        aria-label="Background Color"
         className="w-24 focus:outline-none"
         value={backgroundColour}
         onChange={e => setBackgroundColour(e.target.value)}
       />
       <input
+        aria-label="Background Color Sample"
         type="color"
         className="h-6 w-6 cursor-pointer"
         value={backgroundColour}

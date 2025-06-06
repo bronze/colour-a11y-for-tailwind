@@ -1,6 +1,6 @@
-import {Fragment} from "react"
 import {Listbox, Transition} from "@headlessui/react"
 import {ChevronUpDownIcon} from "@heroicons/react/20/solid"
+import {Fragment} from "react"
 
 export default function Select({items, selected, setSelected}) {
   return (
@@ -21,7 +21,7 @@ export default function Select({items, selected, setSelected}) {
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0">
-            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg sm:text-sm max-h-60 dark:bg-black dark:text-white ring-1 ring-black/5 focus:outline-none ">
+            <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 dark:bg-black dark:text-white ring-1 ring-black/5 focus:outline-none sm:text-sm">
               {items.map(color => (
                 <Listbox.Option
                   key={color.name}
