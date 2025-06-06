@@ -103,7 +103,7 @@ export default function IndexPage() {
                 />
               </div>
               <button
-                className="underline"
+                className="underline text-white mix-blend-difference"
                 onClick={() => setCustomTailwindColor(false)}>
                 Reset
               </button>
@@ -120,7 +120,7 @@ export default function IndexPage() {
                   setIsDarkMode={setIsDarkMode}
                 />
                 <button
-                  className="text-foreground underline"
+                  className="underline text-foreground"
                   onClick={() => setCustomTailwindColor(["slate", 50])}>
                   Custom Tailwind Colour
                 </button>
