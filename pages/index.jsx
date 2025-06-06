@@ -43,7 +43,7 @@ export default function IndexPage() {
           content="Colour Accessibility for Tailwind CSS"
         />
       </Head>
-      <div
+      <header
         className={`pt-4 text-center ${
           isDarkMode || (customTailwindColor && customTailwindColor[1] > 500)
             ? "dark"
@@ -131,8 +131,8 @@ export default function IndexPage() {
             </>
           )}
         </div>
-      </div>
-      <div className="container mx-auto py-6">
+      </header>
+      <main className="container mx-auto py-6">
         {Object.keys(colors)
           .filter(color => typeof colors[color] === "object")
           .map(color => (
@@ -166,7 +166,7 @@ export default function IndexPage() {
               </div>
             </Fragment>
           ))}
-      </div>
+      </main>
     </div>
   )
 }
