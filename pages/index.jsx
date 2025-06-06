@@ -120,7 +120,7 @@ export default function IndexPage() {
                   setIsDarkMode={setIsDarkMode}
                 />
                 <button
-                  className="underline"
+                  className="text-foreground underline"
                   onClick={() => setCustomTailwindColor(["slate", 50])}>
                   Custom Tailwind Colour
                 </button>
