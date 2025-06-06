@@ -142,7 +142,7 @@ export default function IndexPage() {
                 style={{color: colors[color][darkness]}}>
                 {color}
               </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-10 gap-y-6 py-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-11 gap-y-6 py-4">
                 {Object.keys(colors[color]).map(shade => (
                   <div className="flex justify-center flex-col" key={shade}>
                     <div
