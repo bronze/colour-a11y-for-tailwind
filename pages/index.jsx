@@ -1,4 +1,5 @@
 import {Switch} from "@headlessui/react"
+import {formatHex, parse} from "culori"
 import Head from "next/head"
 import Link from "next/link"
 import {Fragment, useEffect, useState} from "react"
@@ -6,27 +7,28 @@ import {hex, score} from "wcag-contrast"
 import Select from "../components/select"
 
 const colors = require("tailwindcss/colors")
+
 export default function IndexPage() {
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [darkness, setDarkness] = useState(700)
   const [lightBackgroundHex, setLightBackgroundHex] = useState("#ffffff")
   const [darkBackgroundHex, setDarkBackgroundHex] = useState("#000000")
   const [customTailwindColor, setCustomTailwindColor] = useState(false)
+
   const usableColors = Object.entries(colors).filter(
     ([_key, value]) => typeof value === "object"
   )
+
   const backgroundColor = customTailwindColor
     ? colors[customTailwindColor[0]][customTailwindColor[1]]
     : isDarkMode
       ? darkBackgroundHex
       : lightBackgroundHex
+
   useEffect(() => {
-    if (isDarkMode) {
-      setDarkness(400)
-    } else {
-      setDarkness(700)
-    }
+    setDarkness(isDarkMode ? 400 : 700)
   }, [isDarkMode])
+
   return (
     <div
       className={`px-2 ${
@@ -70,15 +72,16 @@ export default function IndexPage() {
             About this site
           </Link>
         </h3>
+
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {customTailwindColor ? (
             <div className="grid gap-y-4">
               <div className="flex items-center gap-x-4">
                 Color
                 <Select
-                  items={usableColors.map(item => ({
-                    name: item[0],
-                    color: colors[item[0]][500],
+                  items={usableColors.map(([name]) => ({
+                    name,
+                    color: colors[name][500],
                   }))}
                   selected={customTailwindColor[0]}
                   setSelected={e =>
@@ -87,14 +90,12 @@ export default function IndexPage() {
                 />
                 Shade
                 <Select
-                  items={Object.entries(
-                    usableColors.find(
-                      item => item[0] === customTailwindColor[0]
-                    )[1]
-                  ).map(item => ({
-                    name: item[0],
-                    color: item[1],
-                  }))}
+                  items={Object.entries(colors[customTailwindColor[0]]).map(
+                    ([shade, color]) => ({
+                      name: shade,
+                      color,
+                    })
+                  )}
                   selected={customTailwindColor[1]}
                   setSelected={e =>
                     setCustomTailwindColor([customTailwindColor[0], e])
@@ -132,6 +133,7 @@ export default function IndexPage() {
           )}
         </div>
       </header>
+
       <main className="container mx-auto py-6">
         {Object.keys(colors)
           .filter(color => typeof colors[color] === "object")
@@ -143,26 +145,30 @@ export default function IndexPage() {
                 {color}
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 xl:grid-cols-11 gap-y-6 py-4">
-                {Object.keys(colors[color]).map(shade => (
-                  <div className="flex justify-center flex-col" key={shade}>
-                    <div
-                      className="mx-4 w-20 h-10 text-center rounded self-center text-3xl font-bold"
-                      style={{
-                        color: colors[color][shade],
-                      }}>
-                      CSS
-                    </div>
-                    <div className="self-center pt-2 grid grid-cols-1">
-                      <span className="text-center">{shade}</span>
-                      <span>
-                        Score:{" "}
-                        <span className="font-semibold">
-                          {score(hex(backgroundColor, colors[color][shade]))}
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                ))}
+                {Object.entries(colors[color])
+                  .filter(([_, rawColor]) => !!formatHex(parse(rawColor)))
+                  .map(([shade, rawColor]) => {
+                    const parsedColor = parse(rawColor)
+                    const colorHex = formatHex(parsedColor)
+                    return (
+                      <div className="flex justify-center flex-col" key={shade}>
+                        <div
+                          className="mx-4 w-20 h-10 text-center rounded self-center text-3xl font-bold"
+                          style={{color: colorHex}}>
+                          CSS
+                        </div>
+                        <div className="self-center pt-2 grid grid-cols-1">
+                          <span className="text-center">{shade}</span>
+                          <span>
+                            Score:{" "}
+                            <span className="font-semibold">
+                              {score(hex(backgroundColor, colorHex))}
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    )
+                  })}
               </div>
             </Fragment>
           ))}
@@ -201,7 +207,7 @@ function DarkModeSwitch({isDarkMode, setIsDarkMode}) {
         onChange={setIsDarkMode}
         className={`${
           isDarkMode ? "bg-indigo-600" : "bg-gray-200"
-        } relative inline-flex flex-shrink-0 h-6 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full cursor-pointer w-11 focus:outline-none focus:shadow-outline`}>
+        } relative inline-flex flex-shrink-0 h-6 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full cursor-pointer w-11 focus:outline-none`}>
         {({checked}) => (
           <span
             className={`${

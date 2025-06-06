@@ -20,6 +20,9 @@ dependencies:
   autoprefixer:
     specifier: ^10.2.0
     version: 10.4.21(postcss@8.5.4)
+  culori:
+    specifier: ^4.0.1
+    version: 4.0.1
   next:
     specifier: ^15.3.3
     version: 15.3.3(react-dom@19.1.0)(react@19.1.0)
@@ -906,6 +909,11 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: false
+
+  /culori@4.0.1:
+    resolution: {integrity: sha512-LSnjA6HuIUOlkfKVbzi2OlToZE8OjFi667JWN9qNymXVXzGDmvuP60SSgC+e92sd7B7158f7Fy3Mb6rXS5EDPw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: false
 
   /debug@4.4.1:
